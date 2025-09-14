@@ -31,9 +31,8 @@ Demonstração
 Seja Bem-vindo(a) ao nosso Cardápio digital!  
 Se precisar de assistência não hesite em 'Chamar o Garçom'  
 
------------------
  MENU PRINCIPAL
------------------
+
 1 Pratos principais
 2 Bebidas
 3 Chamar o garçom
