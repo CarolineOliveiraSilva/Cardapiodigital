@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+// Função que exibe o menu principal e retorna a opção escolhida pelo usuário
 int menuprincipal(){
 
     int opcao;
@@ -16,6 +17,7 @@ int menuprincipal(){
 
    return opcao;
 }
+// Função para o menu de pratos principais
 void pratosprincipais(float *totalgeral){;
 
     float precodapicanha= 89.0;
@@ -32,31 +34,31 @@ void pratosprincipais(float *totalgeral){;
             switch (opcao)
             {
             case 1:
-                printf(" Picanha na manteiga adicionada!");
+                printf("\n Picanha na manteiga adicionada!");
                 *totalgeral=*totalgeral +precodapicanha;
-                printf("total R$ %2.f\n", *totalgeral);
+                printf("\ntotal R$ %2.f\n", *totalgeral);
                 break;
 
             case 2:
 
-            printf("Peixe frito adcionado!\n");
+            printf("\nPeixe frito adcionado!\n");
 
             *totalgeral= *totalgeral + precopeixe;
 
-            printf("total R$ %2.f\n", *totalgeral);
+            printf("\ntotal R$ %2.f\n", *totalgeral);
 
             break;
             case 3:
-            printf("Retornando ao menu inicial....\n");
+            printf("\nRetornando ao menu inicial....\n");
              break;
             default:
-            printf("Opção inválida, escolha conforme a lista abaixo\n");
+            printf("\nOpção inválida, escolha conforme a lista abaixo\n");
                 break;
             }
         } while (opcao !=3);
 
 }
-
+// Função para o menu de bebidas
 void menudebebidas(float *totalgeral){
     
         int opcao;
@@ -84,7 +86,7 @@ void menudebebidas(float *totalgeral){
 
             printf("Refrigerante adcionado!\n");
 
-            *totalgeral= *totalgeral + precodaagua;
+            *totalgeral= *totalgeral + precodorefrigerante;
 
             printf("total R$ %2.f\n", *totalgeral);
 
@@ -100,11 +102,13 @@ void menudebebidas(float *totalgeral){
 
 
     }
-
+// Função principal
 int main(){
 
     int opcao;
-    float totalgeral = 0;
+    float totalgeral = 0.0;
+    float desconto = 10.0;
+    float totalcomdesconto= 0.0;
     
     
 
@@ -119,7 +123,7 @@ int main(){
             pratosprincipais(&totalgeral);
             break;
         case 2:
-        menudebebidas(&totalgeral);
+            menudebebidas(&totalgeral);
         break;
         case 3:
             printf("\nOK!Garçom a caminho\n");
@@ -138,6 +142,5 @@ int main(){
     }while(opcao !=4);
 
     return 0;
-
-
+    
 }
