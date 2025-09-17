@@ -2,145 +2,147 @@
 
 // Função que exibe o menu principal e retorna a opção escolhida pelo usuário
 int menuprincipal(){
-
     int opcao;
 
     printf("\n-----------------\n");
-    printf("\n MENU PRINCIPAL\n");
-    printf("\n-----------------\n");
-    printf("\n1 Pratos principais\n");
-    printf("2 Bebidas\n");
-    printf("3 Chamar o garçom\n");
-    printf("4 Encerrar Pedido\n");
+    printf("   MENU PRINCIPAL\n");
+    printf("-----------------\n");
+    printf("1 - Pratos principais\n");
+    printf("2 - Bebidas\n");
+    printf("3 - Chamar o garçom\n");
+    printf("4 - Encerrar Pedido\n");
     printf("Digite sua opção: ");
     scanf("%d", &opcao);
 
-   return opcao;
+    return opcao;
 }
+
 // Função para o menu de pratos principais
-void pratosprincipais(float *totalgeral){;
-
-    float precodapicanha= 89.0;
-    float precopeixe= 40.00;
+int pratosprincipais(float *totalgeral){
+    float precodapicanha = 89.0;
+    float precopeixe = 40.0;
     int opcao;
-    do{
-            printf("\nPRATOS PRINCIPAIS\n");
-            printf("1 Picanha na manteiga R$ %2.f\n", precodapicanha );
-            printf("2 Peixe frito na hora R$ %2.f\n", precopeixe);
-            printf("3 Voltar ao menu inicial\n");
-            printf("Digite sua opção: ");
-            scanf("%d", &opcao);
 
-            switch (opcao)
-            {
+    do {
+        printf("\nPRATOS PRINCIPAIS\n");
+        printf("1 - Picanha na manteiga R$ %.2f\n", precodapicanha);
+        printf("2 - Peixe frito na hora R$ %.2f\n", precopeixe);
+        printf("3 - Voltar ao menu inicial\n");
+        printf("4 - Encerrar pedido\n");
+        printf("Digite sua opção: ");
+        scanf("%d", &opcao);
+
+        switch(opcao) {
             case 1:
-                printf("\n Picanha na manteiga adicionada!");
-                *totalgeral=*totalgeral +precodapicanha;
-                printf("\ntotal R$ %2.f\n", *totalgeral);
+                printf("Picanha na manteiga adicionada!\n");
+                *totalgeral += precodapicanha;
+                printf("Total: R$ %.2f\n", *totalgeral);
                 break;
-
             case 2:
-
-            printf("\nPeixe frito adcionado!\n");
-
-            *totalgeral= *totalgeral + precopeixe;
-
-            printf("\ntotal R$ %2.f\n", *totalgeral);
-
-            break;
-            case 3:
-            printf("\nRetornando ao menu inicial....\n");
-             break;
-            default:
-            printf("\nOpção inválida, escolha conforme a lista abaixo\n");
+                printf("Peixe frito adicionado!\n");
+                *totalgeral += precopeixe;
+                printf("Total: R$ %.2f\n", *totalgeral);
                 break;
-            }
-        } while (opcao !=3);
+            case 3:
+                printf("Retornando ao menu inicial...\n");
+                break;
+            case 4:
+                return 1; // sinaliza para encerrar pedido
+            default:
+                printf("Opção inválida! Escolha conforme o menu.\n");
+        }
+    } while(opcao != 3);
 
+    return 0; // continuar
 }
+
 // Função para o menu de bebidas
-void menudebebidas(float *totalgeral){
-    
-        int opcao;
-        float precodaagua= 12.00;
-        float precodorefrigerante= 15.00;
+int menudebebidas(float *totalgeral){
+    float precodaagua = 12.0;
+    float precodorefrigerante = 15.0;
+    int opcao;
 
-    do{
-        printf("\n-----------------\n");
-        printf("  Menu de Bebidas  \n");
-        printf("\n 1 Água R$ %2.f\n", precodaagua);
-        printf("2 Refrigerante R$ %2.f\n", precodorefrigerante);
-        printf("3 Voltar ao menu inicial\n");
-            printf("Digite sua opção: ");
-            scanf("%d", &opcao);
+    do {
+        printf("\nMENU DE BEBIDAS\n");
+        printf("1 - Água R$ %.2f\n", precodaagua);
+        printf("2 - Refrigerante R$ %.2f\n", precodorefrigerante);
+        printf("3 - Voltar ao menu inicial\n");
+        printf("4 - Encerrar pedido\n");
+        printf("Digite sua opção: ");
+        scanf("%d", &opcao);
 
-            switch (opcao)
-            {
+        switch(opcao){
             case 1:
-                printf(" Água  adicionada!");
-                *totalgeral=*totalgeral + precodaagua;
-                printf("total R$ %2.f\n", *totalgeral);
+                printf("Água adicionada!\n");
+                *totalgeral += precodaagua;
+                printf("Total: R$ %.2f\n", *totalgeral);
                 break;
-
             case 2:
-
-            printf("Refrigerante adcionado!\n");
-
-            *totalgeral= *totalgeral + precodorefrigerante;
-
-            printf("total R$ %2.f\n", *totalgeral);
-
-            break;
-            case 3:
-            printf("Retornando ao menu inicial....\n");
-             break;
-            default:
-            printf("Opção inválida, escolha conforme a lista abaixo\n");
+                printf("Refrigerante adicionado!\n");
+                *totalgeral += precodorefrigerante;
+                printf("Total: R$ %.2f\n", *totalgeral);
                 break;
-            }
-        } while (opcao !=3);
+            case 3:
+                printf("Retornando ao menu inicial...\n");
+                break;
+            case 4:
+                return 1; // sinaliza para encerrar pedido
+            default:
+                printf("Opção inválida! Escolha conforme o menu.\n");
+        }
+    } while(opcao != 3);
 
+    return 0; // continuar
+}
 
-    }
 // Função principal
 int main(){
-
     int opcao;
     float totalgeral = 0.0;
     float desconto = 10.0;
-    float totalcomdesconto= 0.0;
-    
-    
+    float totalcomdesconto = 0.0;
 
-    printf("\nSeja Bem vindo(a) ao nosso Cardápio digital!\n");
-    printf("\n Se precisar de assistencia não hesite em 'Chamar o Garçom'\n");
+    printf("\nSeja bem-vindo(a) ao nosso Cardápio Digital!\n");
+    printf("Se precisar de assistência, não hesite em 'Chamar o Garçom'.\n");
 
-    do{
-        opcao =menuprincipal();
-        switch (opcao)
-        {
-        case 1:
-            pratosprincipais(&totalgeral);
-            break;
-        case 2:
-            menudebebidas(&totalgeral);
-        break;
-        case 3:
-            printf("\nOK!Garçom a caminho\n");
+    do {
+        opcao = menuprincipal();
+        int encerrar = 0;
 
-        break;
-        case 4:
-            printf("\nPedido encerrado!\n");
-            printf("\nValor total da conta R$ %2.f\n", totalgeral);
-            printf("Obrigado e volte sempre!\n");
-            break;
-
-        default:
-            printf("Opção invalida!Escolha conforme menu.");
-            break;
+        switch(opcao){
+            case 1:
+                encerrar = pratosprincipais(&totalgeral);
+                break;
+            case 2:
+                encerrar = menudebebidas(&totalgeral);
+                break;
+            case 3:
+                printf("OK! Garçom a caminho...\n");
+                break;
+            case 4:
+                encerrar = 1;
+                break;
+            default:
+                printf("Opção inválida! Escolha conforme o menu.\n");
         }
-    }while(opcao !=4);
+
+        if(encerrar){
+            opcao = 4; // força encerramento do pedido
+        }
+
+    } while(opcao != 4);
+
+    // Encerramento do pedido
+    printf("\nPedido encerrado!\n");
+    printf("Valor total da conta: R$ %.2f\n", totalgeral);
+
+    if(totalgeral > 100.0){
+        totalcomdesconto = totalgeral - (totalgeral * desconto / 100);
+        printf("Você recebeu 10%% de desconto por gastar acima de R$100!\n");
+        printf("Valor total com desconto: R$ %.2f\n", totalcomdesconto);
+    } 
+
+    printf("Obrigado e volte sempre!\n");
 
     return 0;
-    
 }
